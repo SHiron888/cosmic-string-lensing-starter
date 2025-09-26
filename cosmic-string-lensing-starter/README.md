@@ -1,5 +1,5 @@
 # Cosmic-String Lensing Starter (Rubin-style)
-
+[![DOI](https://zenodo.org/badge/1064904432.svg)](https://doi.org/10.5281/zenodo.17210961)
 This repository is a **credibility pack** for proposals to search for **cosmic strings** via their
 **undistorted double-image** lensing signature. It contains:
 - A light-weight **simulation** that injects string-like duplicate sources into toy sky images (`src/sim_string.py`).
