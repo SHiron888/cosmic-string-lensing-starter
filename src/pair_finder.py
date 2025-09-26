@@ -7,14 +7,23 @@ def load_image(path):
     return np.load(path)
 
 def detect_sources(img, thresh=20.0):
+    """
+    Naive peak finder: marks local maxima above a threshold.
+    A pixel is a peak if it's strictly greater than all 8 neighbors.
+    """
+    import numpy as np
     H, W = img.shape
     peaks = []
     for y in range(1, H-1):
         for x in range(1, W-1):
             v = img[y, x]
-            if v > thresh and v > img[y-1:y+2, x-1:x+2].max(initial=0):
+            if v <= thresh:
+                continue
+            nb = img[y-1:y+2, x-1:x+2].ravel()
+            # exclude the center (index 4 in the 3x3 patch)
+            if v > np.max(np.delete(nb, 4)):
                 peaks.append((y, x, v))
-    return np.array(peaks)
+    return np.array(peaks) if peaks else np.empty((0, 3))
 
 def find_pairs(peaks, max_sep=8, flux_tol=0.15):
     pairs = []
