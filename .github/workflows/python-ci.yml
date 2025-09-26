@@ -3,11 +3,13 @@ name: Python CI
 on:
   push:
   pull_request:
-  workflow_dispatch:  # lets you run it manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/src
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
