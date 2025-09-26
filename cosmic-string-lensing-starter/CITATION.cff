@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: If you use this starter, please cite it.
+title: "Cosmic-String Lensing Starter (Rubin-style)"
+authors:
+  - family-names: Hiron
+    given-names: Shawn
+license: MIT
+version: 0.1.0
